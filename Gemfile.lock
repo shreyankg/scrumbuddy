@@ -70,6 +70,7 @@ GEM
     rake (0.8.7)
     sqlite3-ruby (1.2.4)
     thor (0.14.6)
+    thread-dump (0.0.5)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
@@ -81,3 +82,4 @@ DEPENDENCIES
   mongrel
   rails (= 3.0.3)
   sqlite3-ruby
+  thread-dump
