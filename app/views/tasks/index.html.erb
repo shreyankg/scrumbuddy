@@ -1,0 +1,72 @@
+<h1>Today's Tasks</h1>
+
+<% @users.each do |user| %>
+  <h2 id="<%= user.username %>"><%= user.name %></h2>
+    <ul>
+    <% user.working.each do |task| %>
+      <li>
+        <b
+        <% if task.touched? %>
+          <% if task.status %>
+            id="done"
+          <% else %>
+            <% if task.old? %>
+              id="continue"
+            <% end %>
+          <% end %>
+         <% end %> 
+        >
+        <%= bz task.to_s, user %></b>
+        <% if !task.status %>
+        ( <%= link_to 'Edit', edit_task_path(task) %> |
+          <%= link_to 'Delete', task, :confirm => 'Are you sure?', :method => :delete %> )
+        (
+        <% if !task.touched? %> 
+          <%= link_to 'Continue Working', continue_task_path(task) %> |
+        <% end %>
+        <%= link_to 'Mark as Done', done_task_path(task) %> )
+        <% else %>
+        ( <%= link_to 'Continue Working', continue_task_path(task) %> 
+          <% if !task.touched? %>
+            | <%= link_to 'Mark as Done', done_task_path(task) %>
+          <% end %>
+        )
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+    <div id="forms">
+      <% task = user.tasks.new %>
+      <%= form_for(task) do |f| %>
+          <%= f.hidden_field :user_id %>
+          <h3><%= f.label :description, "Add task"%></h3>
+          <p>
+            <%= f.select :task_type, Task.types %>
+            <%= f.text_field :description, :size => 80, :spellcheck => "true" %><br />
+            <%= f.check_box :status %>
+            <%= f.label :status, "Done?" %>
+          </p>        
+      <% end %>
+    </div>
+    <% if !user.todays_blockers.empty? %>
+      <h3>Blockers</h3>
+      <ul>
+      <% user.todays_blockers.each do |blocker| %>
+        <li><b><%= bz blocker.description, user %></b>
+        ( <%= link_to 'Edit', edit_blocker_path(blocker) %> |
+          <%= link_to 'Delete', blocker, :confirm => 'Are you sure?', :method => :delete %> )
+        </li>
+      <% end %>
+      </ul>
+     <% end %>
+    <div id="forms">
+      <% blocker = user.blockers.new %>
+      <%= form_for(blocker) do |f| %>
+          <%= f.hidden_field :user_id %>
+          <h3><%= f.label :description, "Add blocker"%></h3>
+          <p><%= f.text_field :description, :size => 80, :spellcheck => "true" %></p>    
+      <% end %>
+    </div>
+    <hr />
+<% end %>
+

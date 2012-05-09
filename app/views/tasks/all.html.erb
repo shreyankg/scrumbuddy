@@ -1,0 +1,24 @@
+<h1>All Tasks</h1>
+
+<% @users.each do |user| %>
+  <h2><%= user.name %></h2>
+    <ul>
+    <% user.tasks.each do |task| %>
+      <li>
+        <b
+        <% if task.touched? %>
+          <% if task.status %>
+            id="done"
+          <% else %>
+            <% if task.old? %>
+              id="continue"
+            <% end %>
+          <% end %>
+         <% end %> 
+        ><%= bz task.to_s, user %></b>
+
+      </li>
+    <% end %>
+    </ul>
+<% end %>
+

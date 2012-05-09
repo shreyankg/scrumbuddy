@@ -1,0 +1,21 @@
+Installation
+============
+
+* git clone 
+* cd scrum-buddy
+* install gcc rubygems ruby-devel ruby-sqlite3 sqlite-devel
+* install bundler
+* bundle install
+* Edit config/config.yml with the correct email
+* Edit db/seeds.rb with team details
+* bundle exec rake db:migrate
+* bundle exec rake db:seed
+* crontab -e and copy the contents of scrumbuddy.cron, (make sure to edit path/to/scrumbuddy)
+* [sudo ]rails server -b <ip> [-p <port>]
+
+
+For Production setup
+====================
+
+* RAILS_ENV=production before bundle exec
+* crontab -e : Replace development with production 

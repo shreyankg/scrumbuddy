@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ScrumBuddy</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="main">
+  <div id="sidebar">
+    <h1><%= link_to '<span style="color:red">Scrum</span> Buddy'.html_safe, tasks_path %></h1>
+    <h3>&nbsp;</h3>
+    <h3><%= link_to "Update Today's", tasks_path %></h3>
+    <h3><%= link_to "This Week", week_tasks_path %></h3>    
+    <h3><%= link_to "This Month", month_tasks_path %></h3>        
+    <h3><%= link_to "All Tasks", all_tasks_path %></h3>
+    <h3>&nbsp;</h3>
+    <h3><%= link_to "Today's Scrum Update", today_tasks_path %></h3>
+          
+  </div>
+  <div id="contents">
+    <p id="notice"><%= notice %></p>
+    <%= yield %>
+  </div>
+</div>
+</body>
+</html>

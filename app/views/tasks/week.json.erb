@@ -1,0 +1,24 @@
+[
+  <% for user in @users %>
+  {
+    "user": "<%= user.username %>",
+    "tasks":
+      [ 
+      <% for task in user.weeks %>
+        <% if task.status %>
+          "<%= task.to_s %> - Done"
+        <% else %>
+          "<%= task.to_s %>"
+         <% end %>
+         <% if task != user.weeks.last %>
+          ,
+         <% end %>
+      <% end %>
+      ]
+  }
+  <% if user != @users.last %>
+   ,
+  <% end %>
+  <% end %>
+]
+  
