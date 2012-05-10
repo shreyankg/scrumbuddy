@@ -1,5 +1,5 @@
 class Report < ActionMailer::Base
-  default :from => "no-reply@blah.com"
+  default :from => ScrumConfig::FROM
 
   def today
     @text = User.today_text 

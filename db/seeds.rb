@@ -4,5 +4,8 @@
 # Examples:
 #
 User.create([
-  { :name => "Shreyank Gupta", :username => "shreyankg"},
+  { :name => "Tirtha Chatterjee", :username => "wyuka"},
+  { :name => "Sayak Sarkar", :username => "sayak-sarkar"},
+  { :name => "Abhishek Gupta", :username => "abhishekgupta92"},
+  { :name => "Atriya Sen", :username => "VelvetGhost"},
   ])
