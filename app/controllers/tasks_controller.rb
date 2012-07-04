@@ -10,12 +10,12 @@ class TasksController < ApplicationController
   end
   
   def month
-    @users = User.sorted
+    @users = User.sorted_all
   end
 
   # GET /tasks/all
   def all
-    @users = User.sorted
+    @users = User.sorted_all
   end
 
   # GET /tasks/week

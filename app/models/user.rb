@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   has_many :blockers
   
   def self.sorted
+    self.where(:active => true).sort {|a, b| a.name <=> b.name}
+  end
+  
+  def self.sorted_all
     self.all.sort {|a, b| a.name <=> b.name}
   end
   

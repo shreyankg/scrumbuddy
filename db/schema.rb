@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801162607) do
+ActiveRecord::Schema.define(:version => 20120704094300) do
 
   create_table "blockers", :force => true do |t|
     t.text     "description"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20110801162607) do
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",     :default => true
   end
 
 end
